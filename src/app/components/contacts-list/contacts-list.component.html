@@ -1,0 +1,16 @@
+<mat-list>
+  @for (contact of contactsResource.value(); track contact.id) {
+    <mat-list-item>
+      <h3 matListItemTitle>{{ contact.name }}</h3>
+      <p matListItemLine>{{ contact.email }}</p>
+      <div matListItemMeta>
+        <button mat-icon-button (click)="deleteContact(contact.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  }
+</mat-list>
+@if (contactsResource.isLoading()) {
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+}
